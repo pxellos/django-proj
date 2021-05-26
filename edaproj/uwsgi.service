@@ -1,0 +1,12 @@
+Description=uWSGI Emperor service
+
+[Service]
+ExecStart=uwsgi --emperor -i /home/ubuntu/edaproj/uwsgi.ini --http-socket :5000 --plugin python3
+Restart=on-failure
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
